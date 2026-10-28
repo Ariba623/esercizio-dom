@@ -1,12 +1,31 @@
-<script>
-  const p = document.querySelectorAll('.paragrafo');
-console.log(p);
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esercizio Cercare Elementi nel DOM</title>
+  </head>
+  <body>
+    <h2>Benvenuto nella mia Pagina</h2>
+    <p class="paragrafo">Questo è il primo paragrafo.</p>
+    <p class="paragrafo">Questo è il secondo paragrafo.</p>
+    <p class="paragrafo">Questo è il terzo paragrafo.</p>
+    <ul>
+      <h2>Questa è una lista</h2>
+      <li id="elemento-1">Elemento 1</li>
+      <li id="elemento-2">Elemento 2</li>
+      <li id="elemento-3">Elemento 3</li>
+    </ul>
 
-const li = document.querySelector('#elemento-3');
-console.log(li);
+    <script>
+      const paragrafi = document.querySelectorAll('.paragrafo');
+      const elemento3 = document.getElementById('elemento-3');
+      const titoliH2 = document.querySelectorAll('h2');
 
-const el = document.querySelectorAll('h2');
-console.log(el);
-
-</script>
+      console.log(paragrafi);
+      console.log(elemento3);
+      console.log(titoliH2);
+    </script>
+  </body>
+</html>
 
