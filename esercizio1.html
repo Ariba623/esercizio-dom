@@ -1,19 +1,7 @@
 <script>
-const myUL = document.quesrySelector('ul');
-console.log(myUL);
-
-myUL.parentElement
-console.log(myUL.parentElement);
-
-myUL.children
-console.log(myUL.children);
-
-const li = myUL.children[1];
-console.log(li);
-
-const el1 = li.nextElementSibling;
-console.log(el1);
-
-const el2 = li.previousElementSibling;
-console.log(el2);
+  const ulElement = document.querySelector('ul');
+  console.log(ulElement.parentNode);
+  console.log(ulElement.children[1]);
+  console.log(ulElement.children[1].nextElementSibling);
+  console.log(ulElement.children[1].previousElementSibling);
 </script>
