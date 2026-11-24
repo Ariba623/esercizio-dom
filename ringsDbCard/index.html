@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carta del Signore degli Anelli</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        text-align: center;
+      }
+
+      .card-image {
+        max-width: 300px;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Il Signore degli Anelli - Card Game</h1>
+    <div class="card">
+      <h2 class="card-name">Caricamento...</h2>
+      <img class="card-image" alt="" />
+    </div>
+
+    <script>
+      const BASE_URL = 'https://ringsdb.com';
+      const codiceCarta = '01001'; // codice della carta da mostrare (Core Set)
+
+      async function mostraCarta() {
+        const nome = document.querySelector('.card-name');
+        const immagine = document.querySelector('.card-image');
+
+        try {
+          // endpoint dalla documentazione: /api/public/card/{card_code}
+          const risposta = await fetch(`${BASE_URL}/api/public/card/${codiceCarta}.json`);
+
+          if (!risposta.ok) {
+            throw new Error(`Errore ${risposta.status}`);
+          }
+
+          const carta = await risposta.json();
+
+          // nome del personaggio
+          nome.textContent = carta.name;
+
+          // imagesrc è un percorso relativo (es. /bundles/cards/01001.png), quindi aggiungo il dominio
+          immagine.src = BASE_URL + carta.imagesrc;
+          immagine.alt = carta.name;
+        } catch (errore) {
+          nome.textContent = 'Impossibile caricare la carta';
+          console.error(errore);
+        }
+      }
+
+      mostraCarta();
+    </script>
+  </body>
+</html>
